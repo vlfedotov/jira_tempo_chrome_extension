@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "jira_tempo_ext",
+  "version": "0.1.0",
+  "description": "Extension",
+  "author": "Fedotov Vladimir @vlfedotov",
+  "browser_action": {
+    "default_title": "Use this to open the popup",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
