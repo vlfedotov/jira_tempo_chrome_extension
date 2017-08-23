@@ -1,16 +1,27 @@
 <!doctype html>
 <html>
+
 <head>
-  <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="popup.css">
+<title>My Jira + Tempo</title>
 </head>
+
 <body>
-  <h1>My awesame popup!</h1>
-  <label for="button">You should have:</label>
-  <button id="button">A button!</button>
-  <a href="#">or a link</a>
-  <p>
-    Or just a paragraph
-  </p>
-  <script src="popup.js"></script>
+    <h1>Today Tasks</h1>
+    <div class="all-tasks">
+        <div class="task">
+            <img src="https://b2bpolis.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype" alt="Bug" class="task-icon">
+            <span class="task-key"><a href="https://b2bpolis.atlassian.net/browse/SCRUM-3099">SCRUM-3099</a></span>
+            <span class="task-summary">Работа подписи у IBG</span>
+            <p class="task-status">Draft</p>
+            <p class="task-description">Составить инструкцию по смене сертификата</p>
+        </div>
+    </div>
+    <script src="vendor/js/jquery-3.2.1.js"></script>
+    <script src="vendor/js/underscore.js"></script>
+    <script src="popup.js"></script>
 </body>
+
 </html>

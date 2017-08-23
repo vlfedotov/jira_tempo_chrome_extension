@@ -1,0 +1,16 @@
+to_do_queries = "https://b2bpolis.atlassian.net/rest/api/2/search?jql=project=Scrum%20and%20assignee=vf%20and%20status%20in%20(Draft,Open,%22In%20Progress%22)"
+
+
+issues[0].key = "SCRUM-3099"
+// link = "https://b2bpolis.atlassian.net/browse/SCRUM-3099"
+issues[0].fields.issuetype.name = "Bug"
+issues[0].fields.issuetype.iconUrl = "https://b2bpolis.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype"
+issues[0].fields.summary = "Работа подписи у IBG"
+issues[0].fields.creator.name = "Dima Tarasov"
+issues[0].fields.creator.avatarUrls.32x32 = "https://avatar-cdn.atlassian.com/5d8e2834b6e72cdccdcf091c535b82d6?s=32&d=https%3A%2F%2Fb2bpolis.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dmedium%26avatarId%3D10514%26noRedirect%3Dtrue"
+issues[0].fields.reporter.name = "Dima Tarasov"
+issues[0].fields.reporter.avatarUrls.24x24 = "https://avatar-cdn.atlassian.com/5d8e2834b6e72cdccdcf091c535b82d6?s=24&d=https%3A%2F%2Fb2bpolis.atlassian.net%2Fsecure%2Fuseravatar%3Fsize%3Dsmall%26avatarId%3D10514%26noRedirect%3Dtrue"
+issues[0].fields.timeoriginalestimate = 10800   // SEC 2 HOURS => SEC / 60 / 60
+issues[0].fields.description = "Составить инструкцию по смене сертификата"
+issues[1].fields.status.name = "Draft"
+issues[0].fields.fixVersions[0].name = "IBG 2017.1"
