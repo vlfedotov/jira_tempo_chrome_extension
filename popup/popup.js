@@ -1,9 +1,19 @@
-(function () {
-  'use strict';
+var cacheManager;
 
-  $('#refresh-button').click(function () {
-    RefreshTasks();
-  });
+(function () {
+    'use strict';
+
+    $('#refresh-button').click(function () {
+        RefreshTasks();
+    });
+
+    var backgroundPage = chrome.extension.getBackgroundPage();
+    cacheManager = new backgroundPage.cachedContent();
+    
+    var content = cacheManager.getContent();
+    if (content != null) {
+        $(".all-tasks").append(content);
+    }
 }());
 
 function RefreshTasks() {
@@ -20,6 +30,9 @@ function RefreshTasks() {
             "authorization": "Basic dmZAY21pb3MucnU6MjM0d2VyXys="
         }
     };
+    
+    var tasks = $(".all-tasks");
+    tasks.innerHTML = '';
 
     $.ajax(settings).done(function (response) {
         // console.log(response);
@@ -36,21 +49,30 @@ function RefreshTasks() {
                 taskUrl = 'https://b2bpolis.atlassian.net/browse/' + taskKey,
                 taskSummary = issue.fields.summary,
                 taskStatus = issue.fields.status.name,
-                // taskEstimateInHours = fields.timeoriginalestimate / 60 / 60,
-                // taskVersion = fields.fixVersions[0].name,
+//                taskEstimate = issue.fields.timeoriginalestimate,
+//                taskVersions = issue.fields.fixVersions,
                 taskDescription = issue.fields.description;
 
-            var task = $('#task');
-            task.find('.task-icon').alt = issueType;
-            task.find('.task-icon').src = issueIcon;
-            task.find('.task-key').href = taskUrl;
-            task.find('.task-key').text = taskKey;
-            task.find('.task-summary').text = taskSummary;
-            task.find('.task-status').text = taskStatus;
-            task.find('.task-description').alt = taskDescription;
+            
+            var task = $('#task-template')[0].content.cloneNode(true).firstElementChild;
+            task.getElementsByClassName('task-icon')[0].alt = issueType;
+            task.getElementsByClassName('task-icon')[0].src = issueIcon;
+            task.getElementsByClassName('task-key')[0].firstElementChild.href = taskUrl;
+            task.getElementsByClassName('task-key')[0].firstElementChild.text = taskKey;
+            task.getElementsByClassName('task-summary')[0].textContent = taskSummary;
+            task.getElementsByClassName('task-status')[0].textContent = taskStatus;
+            task.getElementsByClassName('task-description')[0].textContent = taskDescription;
 
-
-
+//            if (taskVersions) {
+//                var taskVersion = taskVersions[0].name;
+//                task.getElementsByClassName('task-version')[0].text = taskVersion;
+//            }
+//            
+//            if (taskEstimate) {
+//                var hours = Math.floor(taskEstimate / (60 * 60)),
+//                    minutes = Math.floor(taskEstimate % (60 * 60) / 60);
+//                task.getElementsByClassName('task-estimation')[0].text = hours + 'h' + ' ' + minutes + 'm';
+//            }
 
             // var sdsdf = `
             // <div class="task">
@@ -71,9 +93,10 @@ function RefreshTasks() {
             //             '<p class="task-status">' + taskStatus + '</p>' +
             //             '<p class="task-description">' + taskDescription + '</p></div>';
 
-            console.log(task);
+//            console.log(task);
 
-            $(".all-tasks").append(task);
+            tasks.append(task);
+            cacheManager.saveContent(tasks.html);
 
         });
 

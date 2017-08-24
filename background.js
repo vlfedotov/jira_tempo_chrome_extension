@@ -3,12 +3,26 @@ function handleButtonClick() {
     console.log('4533');
     $(".all-tasks").append("<div>werwerwer</div>");
 
-    // chrome.tabs.create({
-    //         url: "https://b2bpolis.atlassian.net/browse/SCRUM-3099"
-    //     }, function (tab) {
-    //         console.log(tab);
-    // });
 }
+
+var cachedContent = function () {
+    'use strict';
+    
+    var cachedContent = '';
+    var that = this;
+    
+    this.saveContent = function (content) {
+        console.log(that.cachedContent);
+        console.log(content);
+        that.cachedContent = content;
+    }
+    
+    this.getContent = function () {
+        console.log(that.cachedContent);
+        return that.cachedContent;
+    }
+    
+};
 
 
 

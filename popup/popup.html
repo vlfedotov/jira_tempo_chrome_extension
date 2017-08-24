@@ -11,16 +11,18 @@
 <body>
     <h1>Today Tasks</h1>
     <button id="refresh-button" class="btn btn-default">Refresh</button>
+    <template id="task-template" hidden>
+        <div class="task" id="task">
+            <img src="" alt="" class="task-icon">
+            <span class="task-key"><a href="#"></a></span>
+            <span class="task-summary"></span>
+            <p class="task-status"></p>
+            <p class="task-description"></p>
+            <p class="task-version"></p>
+            <p class="task-estimation"></p>
+        </div>
+    </template>
     <div class="all-tasks">
-        <!--<template id="task-template">-->
-            <div class="task" id="task">
-                <img src="https://b2bpolis.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype" alt="Bug" class="task-icon">
-                <span class="task-key"><a href="https://b2bpolis.atlassian.net/browse/SCRUM-3099">SCRUM-3099</a></span>
-                <span class="task-summary">Работа подписи у IBG</span>
-                <p class="task-status">Draft</p>
-                <p class="task-description">Составить инструкцию по смене сертификата</p>
-            </div>
-        <!--</template>-->
     </div>
     <script src="vendor/js/jquery-3.2.1.js"></script>
     <script src="vendor/js/underscore.js"></script>
